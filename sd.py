@@ -15,3 +15,10 @@ def push():
     current_time_str = current_time.strftime("%H:%M:%S")
     os.system(f"git commit -m \"Saved {date.today()} {current_time_str}\"")
     os.system("git push")
+
+def pull():
+    if out := "Already up to date." not in str(subprocess.check_output("git pull", shell=True)):
+        shutil.copyfile(f"./{FILENAME}", save_path)
+    return out
+
+
